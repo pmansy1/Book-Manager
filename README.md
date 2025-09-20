@@ -75,9 +75,6 @@ docker build -t my-spring-container .
 docker run --rm -p 8080:8080 my-spring-container
 ```
 
-The final runtime layer uses **Eclipse Temurin JRE 17** and runs
-`java -jar app.jar` with port 8080 exposed.
-
 ------------------------------------------------------------------------
 
 ## How to Use the API
@@ -109,7 +106,7 @@ Deleting a missing id results in an error response.
 
 ## Explore the API Visually
 
-Open <http://localhost:8080/swagger-ui/index.html> in a browser to try
+Open <(http://localhost:8080/swagger-ui/#/)> in a browser to try
 the endpoints through Swagger UI.
 =======
 *(Response shown after the next step.)*
