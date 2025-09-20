@@ -1,7 +1,6 @@
 package cpsc415;
 
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -12,8 +11,8 @@ public class BookController {
     private BookService bookService;
 
     @PostMapping("/add")
-    public void addBook() {
-        bookService.addBook();
+    public void addBook(Integer id, String title, Integer ISBN) {
+        bookService.addBook( id, title, ISBN);
     }
 
     @GetMapping("/view")
@@ -21,8 +20,9 @@ public class BookController {
         return bookService.getBooks();
     }
 
-    @GetMapping("/hello")
-    public String hello(){
-        return "Hello World!";
+    @DeleteMapping("/delete/{id}")
+    public void deleteBook(@PathVariable Integer id) {
+        bookService.deleteBook(id);
     }
+
 }

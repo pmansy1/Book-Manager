@@ -9,7 +9,7 @@ import java.util.List;
 public class BookService {
     private List<Book> bookList = new ArrayList<>();
 
-    public void addBook(){
+    public void addBook(Integer id, String title, Integer ISBN){
         Book book = new Book();
         book.setId(1);
         book.setTitle("Book of Thieves");
@@ -27,5 +27,18 @@ public class BookService {
         return bookList;
     }
 
+
+    public void deleteBook(Integer id) {
+        for (Book book : bookList) {
+            if (book.getId() == id) {
+                bookList.remove(book);
+                return;
+            }
+            else {
+                continue;
+            }
+        }
+        throw new RuntimeException("Book not found");
+    }
 
 }

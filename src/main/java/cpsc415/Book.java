@@ -31,4 +31,10 @@ public class Book {
     public void setISBN(Integer ISBN) {
         this.ISBN = ISBN;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" + "id=" + id + ", title=" + title + ", ISBN=" + ISBN + '}';
+    }
+
 }
