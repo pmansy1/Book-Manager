@@ -7,7 +7,7 @@ import java.util.List;
 
 @Service
 public class BookService {
-    private List<Book> bookList = new ArrayList<>();
+    public List<Book> bookList = new ArrayList<>();
 
     public void addBook(Integer id, String title, Integer ISBN){
         Book book = new Book();
@@ -21,6 +21,15 @@ public class BookService {
         book2.setTitle("Percius Jackstonian");
         book2.setISBN(123456789);
         bookList.add(book2);
+
+        Book book3 = new Book();
+        book3.setId(3);
+        book3.setTitle("The Hobbit");
+        book3.setISBN(123456789);
+        bookList.add(book3);
+        System.out.println(book3.getTitle() + " added");
+
+        System.out.println(title + " added");
     }
 
     public List<Book> getBooks() {
@@ -32,6 +41,7 @@ public class BookService {
         for (Book book : bookList) {
             if (book.getId() == id) {
                 bookList.remove(book);
+                System.out.println(book.getTitle() + " deleted");
                 return;
             }
             else {
