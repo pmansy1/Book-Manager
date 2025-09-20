@@ -18,7 +18,6 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <!-- Springfox works on Java 8/11/17. Use 17 here. -->
         <java.version>17</java.version>
     </properties>
 
@@ -28,7 +27,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- ✅ Springfox (Swagger 2 UI + Docket) -->
+        <!-- Swagger (Springfox) -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
@@ -39,11 +38,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>cpsc415</groupId>
-            <artifactId>demo</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
@@ -56,4 +50,3 @@
         </plugins>
     </build>
 </project>
-

@@ -29,6 +29,11 @@ public class BookService {
         bookList.add(book3);
         System.out.println(book3.getTitle() + " added");
 
+        Book book4 = new Book();
+        book4.setId(id);
+        book4.setTitle(title);
+        book4.setISBN(ISBN);
+        bookList.add(book4);
         System.out.println(title + " added");
     }
 
