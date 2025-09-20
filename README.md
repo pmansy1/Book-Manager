@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # My Spring Container
 
 ## Purpose
