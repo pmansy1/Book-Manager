@@ -33,7 +33,7 @@ Swagger UI documentation is generated at:\
 
 ## Build and Run
 
-### Using Maven (recommended)
+### Using Maven 
 
 **Build the executable jar:**
 
@@ -55,11 +55,6 @@ Swagger UI documentation is generated at:\
 
 The service starts on port `8080` by default.
 
-**Run the packaged jar:**
-
-``` bash
-java -jar target/demo-0.0.1-SNAPSHOT.jar
-```
 
 ### Using Docker
 
