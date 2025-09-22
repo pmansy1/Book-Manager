@@ -27,13 +27,13 @@ No database required.
     exists.
 
 Swagger UI documentation is generated at:\
-<http://localhost:8080/swagger-ui/index.html>
+<http://localhost:8080/swagger-ui>
 
 ------------------------------------------------------------------------
 
 ## Build and Run
 
-### Using Maven (recommended)
+### Using Maven 
 
 **Build the executable jar:**
 
@@ -55,11 +55,6 @@ Swagger UI documentation is generated at:\
 
 The service starts on port `8080` by default.
 
-**Run the packaged jar:**
-
-``` bash
-java -jar target/demo-0.0.1-SNAPSHOT.jar
-```
 
 ### Using Docker
 
@@ -106,7 +101,7 @@ Deleting a missing id results in an error response.
 
 ## Explore the API Visually
 
-Open <(http://localhost:8080/swagger-ui/#/)> in a browser to try
+Open <http://localhost:8080/swagger-u)> in a browser to try
 the endpoints through Swagger UI.
 =======
 *(Response shown after the next step.)*
