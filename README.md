@@ -101,18 +101,23 @@ Deleting a missing id results in an error response.
 
 ## Explore the API Visually
 
-Open <http://localhost:8080/swagger-u)> in a browser to try
-the endpoints through Swagger UI.
+**Open <http://localhost:8080/swagger-u> in a browser to try
+the endpoints through Swagger UI.**
 =======
 *(Response shown after the next step.)*
 
 View all books
 
+``` bash
 curl http://localhost:8080/view
+```
+
 Returns the current list in JSON.
 
 Delete a book
-
+``` bash
 curl -X DELETE http://localhost:8080/delete/1
+```
+
 Removes the book with id = 1; deleting a missing id results in an error response.
 
