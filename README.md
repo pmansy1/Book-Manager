@@ -105,7 +105,7 @@ Open <http://localhost:8080/swagger-u> in a browser to try
 the endpoints through Swagger UI
 
 
-View all books
+**View all books**
 
 ``` bash
 curl http://localhost:8080/view
@@ -113,7 +113,8 @@ curl http://localhost:8080/view
 
 Returns the current list in JSON.
 
-Delete a book
+**Delete a book**
+
 ``` bash
 curl -X DELETE http://localhost:8080/delete/1
 ```
