@@ -101,11 +101,9 @@ Deleting a missing id results in an error response.
 
 ## Explore the API Visually
 
-*Open <http://localhost:8080/swagger-u> in a browser to try
-the endpoints through Swagger UI*
+Open <http://localhost:8080/swagger-u> in a browser to try
+the endpoints through Swagger UI
 
-=======
-*(Response shown after the next step.)*
 
 View all books
 
