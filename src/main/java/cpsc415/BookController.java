@@ -11,8 +11,8 @@ public class BookController {
     private BookService bookService;
 
     @PostMapping("/add")
-    public String addBook(Integer id, String title, Integer ISBN) {
-        bookService.addBook(id, title, ISBN);
+    public String addBook(String title, Integer ISBN) {
+        bookService.addBook(title, ISBN);
         return title + "has been added";
     }
 

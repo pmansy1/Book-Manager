@@ -9,7 +9,8 @@ function BookManager() {
   const [books, setBooks] = useState([]);
   
   // State for the new book form inputs
-  const [newBook, setNewBook] = useState({ id: '', title: '', ISBN: '' });
+  // 🔄 CHANGE 1: ID field REMOVED from the state
+  const [newBook, setNewBook] = useState({ title: '', ISBN: '' });
 
   // 1. READ (GET) - Fetch all books on component load and any time the dependency array changes
   const fetchBooks = async () => {
@@ -29,8 +30,6 @@ function BookManager() {
   // Handle input changes for the new book form
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    // Note: Spring expects Integers, so you might want to convert them later, 
-    // but for simple text input, we'll keep it as strings here.
     setNewBook(prev => ({ ...prev, [name]: value }));
   };
 
@@ -38,10 +37,8 @@ function BookManager() {
   const addBook = async (e) => {
     e.preventDefault(); // Prevent default form submission
     
-    // Your Spring API uses query parameters, so we'll use a URLSearchParams object
-    // to correctly format the data for the POST request.
+    // 🔄 CHANGE 2: ID parameter REMOVED from the URLSearchParams
     const params = new URLSearchParams();
-    params.append('id', newBook.id);
     params.append('title', newBook.title);
     params.append('ISBN', newBook.ISBN);
 
@@ -52,15 +49,17 @@ function BookManager() {
         }
       });
       alert(response.data); // Show the success message from your Spring controller
-      setNewBook({ id: '', title: '', ISBN: '' }); // Clear the form
+      
+      // 🔄 CHANGE 3: Clear the form state, only resetting title and ISBN
+      setNewBook({ title: '', ISBN: '' }); 
       fetchBooks(); // Refresh the list of books
     } catch (error) {
       console.error('Error adding book:', error);
-      alert('Failed to add book.');
+      alert('Failed to add book. Check your Spring service logs.');
     }
   };
 
-  // 3. DELETE (DELETE) - Delete a book by ID
+  // 3. DELETE (DELETE) - Delete a book by ID (No change needed here)
   const deleteBook = async (id) => {
     if (!window.confirm(`Are you sure you want to delete book with ID: ${id}?`)) {
         return;
@@ -83,15 +82,8 @@ function BookManager() {
       {/* ADD BOOK FORM (CREATE) */}
       <h2>Add New Book</h2>
       <form onSubmit={addBook} style={{ display: 'flex', gap: '10px', marginBottom: '30px' }}>
-        <input 
-          type="number" 
-          name="id" 
-          placeholder="ID (Integer)" 
-          value={newBook.id} 
-          onChange={handleInputChange} 
-          required 
-          style={{ padding: '8px', border: '1px solid #ccc' }}
-        />
+        {/* 🔄 CHANGE 4: ID input field REMOVED from the JSX */}
+        
         <input 
           type="text" 
           name="title" 
@@ -115,7 +107,7 @@ function BookManager() {
         </button>
       </form>
 
-      {/* BOOK LIST (READ) */}
+      {/* BOOK LIST (READ) - No changes needed here, as the table still displays the ID returned by the service */}
       <h2>Current Books</h2>
       {books.length === 0 ? (
         <p>No books found. Add one!</p>
