@@ -1,10 +1,10 @@
 package cpsc415;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3001")
 @RestController
 public class BookController {
     @Autowired
@@ -12,7 +12,7 @@ public class BookController {
 
     @PostMapping("/add")
     public String addBook(Integer id, String title, Integer ISBN) {
-        bookService.addBook( id, title, ISBN);
+        bookService.addBook(id, title, ISBN);
         return title + "has been added";
     }
 
