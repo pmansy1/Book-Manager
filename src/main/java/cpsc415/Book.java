@@ -1,6 +1,5 @@
 package cpsc415;
 
-
 public class Book {
     private Integer id;
 

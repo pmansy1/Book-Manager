@@ -3,7 +3,7 @@ package cpsc415;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct; // Import for initialization
+import javax.annotation.PostConstruct;
 
 @Service
 public class BookService {
@@ -15,9 +15,9 @@ public class BookService {
     // 1. New method to initialize books at startup
     @PostConstruct
     public void initializeBooks() {
-        addInitialBook("Book of Thieves", 987654321);
+        addInitialBook("Book of Saints", 987654321);
         addInitialBook("Percius Jackstonian", 123456789);
-        addInitialBook("The Hobbit", 123456789);
+        addInitialBook("The Harriet Potta", 123456789);
     }
 
     // Helper method to add initial books with automatic ID assignment
@@ -31,11 +31,8 @@ public class BookService {
 
     // 2. Updated: addBook now ONLY handles the book being added from the API
     // request
-    // It NO LONGER needs the 'id' parameter from the frontend.
     public void addBook(String title, Integer ISBN) {
         Book book = new Book();
-
-        // Assign the current counter value and then increment it for the next book
         book.setId(idCounter++);
 
         book.setTitle(title);
@@ -49,8 +46,8 @@ public class BookService {
         return bookList;
     }
 
+    // 3. Updated: deleteBook now uses removeIf for cleaner code
     public void deleteBook(Integer id) {
-        // Improved delete logic using List.removeIf (Java 8+) for cleaner code
         boolean removed = bookList.removeIf(book -> book.getId().equals(id));
 
         if (removed) {
