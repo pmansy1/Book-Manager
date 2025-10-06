@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-deployment
+  labels:
+    app: book-api
+spec:
+  # REQUIRED: 2 replicas
+  replicas: 2
+  selector:
+    matchLabels:
+      app: book-api
+  template:
+    metadata:
+      labels:
+        app: book-api
+    spec:
+      containers:
+      - name: spring-microservice
+        # Use your existing container image from DockerHub
+        image: pmansy1/spring-microservice:1.0.0
+        ports:
+        - containerPort: 8080

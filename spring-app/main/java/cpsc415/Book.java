@@ -1,12 +1,11 @@
 package cpsc415;
 
-
 public class Book {
     private Integer id;
 
     private String title;
 
-    private Integer ISBN;
+    private Integer isbn;
 
     public Integer getId() {
         return id;
@@ -28,8 +27,8 @@ public class Book {
         return ISBN;
     }
 
-    public void setISBN(Integer ISBN) {
-        this.ISBN = ISBN;
+    public void setISBN(Integer isbn) {
+        this.isbn = isbn;
     }
 
     @Override

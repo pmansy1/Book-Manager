@@ -4,15 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3001")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class BookController {
     @Autowired
     private BookService bookService;
 
     @PostMapping("/add")
-    public String addBook(String title, Integer ISBN) {
-        bookService.addBook(title, ISBN);
+    public String addBook(String title, Integer isbn) {
+        bookService.addBook(title, isbn);
         return title + "has been added";
     }
 
@@ -25,6 +25,12 @@ public class BookController {
     public String deleteBook(@PathVariable Integer id) {
         bookService.deleteBook(id);
         return " Book deleted";
+    }
+
+    @PutMapping("/update/{id}")
+    public String updateBook(@PathVariable Integer id, @RequestParam String title) {
+        bookService.updateBookTitle(id, title);
+        return "Book ID " + id + " title updated to: " + title;
     }
 
 }

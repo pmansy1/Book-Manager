@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-deployment
+  labels:
+    app: book-frontend
+spec:
+  # REQUIRED: 2 replicas
+  replicas: 2
+  selector:
+    matchLabels:
+      app: book-frontend
+  template:
+    metadata:
+      labels:
+        app: book-frontend
+    spec:
+      containers:
+      - name: react-ui
+        # Use your newly created NGINX-based container image
+        image: pmansy1/react-frontend:1.0.0 
+        ports:
+        - containerPort: 80 # Nginx default port

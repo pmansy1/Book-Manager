@@ -3,7 +3,7 @@ package cpsc415;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct; // Import for initialization
+import javax.annotation.PostConstruct;
 
 @Service
 public class BookService {
@@ -15,31 +15,28 @@ public class BookService {
     // 1. New method to initialize books at startup
     @PostConstruct
     public void initializeBooks() {
-        addInitialBook("Book of Thieves", 987654321);
+        addInitialBook("Book of Saints", 987654321);
         addInitialBook("Percius Jackstonian", 123456789);
-        addInitialBook("The Hobbit", 123456789);
+        addInitialBook("The Harriet Potta", 123456789);
     }
 
     // Helper method to add initial books with automatic ID assignment
-    private void addInitialBook(String title, Integer ISBN) {
+    private void addInitialBook(String title, Integer isbn) {
         Book book = new Book();
         book.setId(idCounter++); // Assign ID and increment counter
         book.setTitle(title);
-        book.setISBN(ISBN);
+        book.setISBN(isbn);
         bookList.add(book);
     }
 
     // 2. Updated: addBook now ONLY handles the book being added from the API
     // request
-    // It NO LONGER needs the 'id' parameter from the frontend.
-    public void addBook(String title, Integer ISBN) {
+    public void addBook(String title, Integer isbn) {
         Book book = new Book();
-
-        // Assign the current counter value and then increment it for the next book
         book.setId(idCounter++);
 
         book.setTitle(title);
-        book.setISBN(ISBN);
+        book.setISBN(isbn);
         bookList.add(book);
 
         System.out.println(title + " added with ID: " + book.getId());
@@ -49,8 +46,8 @@ public class BookService {
         return bookList;
     }
 
+    // 3. Updated: deleteBook now uses removeIf for cleaner code
     public void deleteBook(Integer id) {
-        // Improved delete logic using List.removeIf (Java 8+) for cleaner code
         boolean removed = bookList.removeIf(book -> book.getId().equals(id));
 
         if (removed) {
@@ -58,5 +55,19 @@ public class BookService {
         } else {
             throw new RuntimeException("Book with ID " + id + " not found");
         }
+    }
+
+    // 4. Updated: updateBookTitle now throws an exception if the book isn't found
+    public void updateBookTitle(Integer id, String newTitle) {
+        for (Book book : bookList) {
+            if (book.getId().equals(id)) {
+                // Found the book, update the title
+                book.setTitle(newTitle);
+                System.out.println("Book ID " + id + " title updated to: " + newTitle);
+                return; // Exit the method after update
+            }
+        }
+        // If the loop finishes without finding the book
+        throw new RuntimeException("Book with ID " + id + " not found for update.");
     }
 }
