@@ -16,8 +16,8 @@ spec:
         app: book-frontend
     spec:
       containers:
-      - name: react-ui
-        # Use your newly created NGINX-based container image
-        image: pmansy1/react-frontend:1.0.0 
-        ports:
-        - containerPort: 80 # Nginx default port
+        - name: react-ui
+          # Use your newly created NGINX-based container image
+          image: pmansy1/react-frontend:1.0.0
+          ports:
+            - containerPort: 80 # Nginx default port

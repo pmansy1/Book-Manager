@@ -12,7 +12,7 @@ You must have the following tools installed and configured:
 - **Node.js / npm**
 - **Docker Desktop**: Running with Kubernetes enabled.
 - **kubectl**: Kubernetes command-line tool.
-- **Docker Hub Account**: Logged in locally to push images (Username: pmansy1).
+- **Docker Hub Account**: Logged in locally to push images (Username: `<docker-hub-username>`).
 
 ## 🛠️ 2. Build and Push Containers
 
@@ -20,18 +20,18 @@ This stage creates the production-ready Docker images and pushes them to Docker 
 
 ### A. Spring Microservice (Backend)
 
-| Command                                               | Location               | Description                          |
-| ----------------------------------------------------- | ---------------------- | ------------------------------------ |
-| `docker build -t pmansy1/spring-microservice:2.0.1 .` | `my-spring-container/` | Builds the Spring application image. |
-| `docker push pmansy1/spring-microservice:2.0.1`       | `my-spring-container/` | Pushes the image to Docker Hub.      |
+| Command                                                             | Location               | Description                          |
+| ------------------------------------------------------------------- | ---------------------- | ------------------------------------ |
+| `docker build -t <docker-hub-username>/spring-microservice:2.0.1 .` | `my-spring-container/` | Builds the Spring application image. |
+| `docker push <docker-hub-username>/spring-microservice:2.0.1`       | `my-spring-container/` | Pushes the image to Docker Hub.      |
 
 ### B. React Frontend (UI)
 
-| Command                                          | Location    | Description                                                                |
-| ------------------------------------------------ | ----------- | -------------------------------------------------------------------------- |
-| `npm run build`                                  | `frontend/` | Compiles React source code (must be run before building the Docker image). |
-| `docker build -t pmansy1/react-frontend:1.0.4 .` | `frontend/` | Builds the Nginx image containing the static UI files.                     |
-| `docker push pmansy1/react-frontend:1.0.4`       | `frontend/` | Pushes the image to Docker Hub.                                            |
+| Command                                                        | Location    | Description                                                                |
+| -------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------- |
+| `npm run build`                                                | `frontend/` | Compiles React source code (must be run before building the Docker image). |
+| `docker build -t <docker-hub-username>/react-frontend:1.0.5 .` | `frontend/` | Builds the Nginx image containing the static UI files.                     |
+| `docker push <docker-hub-username>/react-frontend:1.0.5`       | `frontend/` | Pushes the image to Docker Hub.                                            |
 
 ## 🌐 3. Deploy to Kubernetes
 
@@ -42,6 +42,11 @@ Navigate to the manifests directory:
 ```bash
 cd k8s/
 ```
+
+**Important**: Before applying the manifests, update the image names in the deployment files to use your Docker Hub username:
+
+- Edit `spring-deployment.yaml` and replace `<docker-hub-username>` with your actual Docker Hub username
+- Edit `react-deployment.yaml` and replace `<docker-hub-username>` with your actual Docker Hub username
 
 Apply all four Kubernetes Manifests:
 
@@ -111,8 +116,8 @@ To remove all deployed resources and free up ports on your local cluster:
 - **CORS Configuration**: The Spring Boot backend includes CORS configuration to allow cross-origin requests from the React frontend.
 - **Service Communication**: The frontend communicates with the backend using the Kubernetes service name `book-api-service:8080` internally, and `localhost:8080` via port forwarding for external access.
 - **Image Versions**: The current deployment uses:
-  - Spring Backend: `pmansy1/spring-microservice:2.0.1`
-  - React Frontend: `pmansy1/react-frontend:1.0.4`
+  - Spring Backend: `<docker-hub-username>/spring-microservice:2.0.1`
+  - React Frontend: `<docker-hub-username>/react-frontend:1.0.5` (with modern UI enhancements)
 
 ## 🔧 Troubleshooting
 

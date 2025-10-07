@@ -16,9 +16,9 @@ spec:
         app: book-api
     spec:
       containers:
-      - name: spring-microservice
-        # Use your existing container image from DockerHub
-        image: pmansy1/spring-microservice:2.0.0
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
+        - name: spring-microservice
+          # Use your existing container image from DockerHub
+          image: pmansy1/spring-microservice:2.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
