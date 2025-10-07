@@ -6,7 +6,7 @@ spec:
   selector:
     app: book-api
   # REQUIRED: ClusterIP for internal-only exposure to the frontend
-  type: ClusterIP 
+  type: NodePort
   ports:
     - protocol: TCP
       port: 8080        # The port the service listens on

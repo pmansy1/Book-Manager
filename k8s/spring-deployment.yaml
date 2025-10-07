@@ -18,6 +18,7 @@ spec:
       containers:
       - name: spring-microservice
         # Use your existing container image from DockerHub
-        image: pmansy1/spring-microservice:1.0.0
+        image: pmansy1/spring-microservice:2.0.0
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080

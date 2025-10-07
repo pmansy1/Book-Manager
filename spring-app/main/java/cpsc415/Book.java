@@ -24,7 +24,7 @@ public class Book {
     }
 
     public Integer getISBN() {
-        return ISBN;
+        return isbn;
     }
 
     public void setISBN(Integer isbn) {
@@ -33,7 +33,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" + "id=" + id + ", title=" + title + ", ISBN=" + ISBN + '}';
+        return "Book{" + "id=" + id + ", title=" + title + ", ISBN=" + isbn + '}';
     }
 
 }
