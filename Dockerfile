@@ -5,7 +5,7 @@ WORKDIR /app
 COPY pom.xml .
 
 # Copy the entire source tree using the actual path shown in your project structure
-COPY spring-app/main /app/src/main 
+COPY spring-app/main/java /spring-app/main/resources
 
 # We now have to run the packaging process
 RUN mvn clean package -DskipTests
