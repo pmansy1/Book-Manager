@@ -4,6 +4,8 @@ import axios from 'axios';
 // 🚨 IMPORTANT: Change this to the K8s internal service name for deployment!
 // The internal name is the name of the Kubernetes Service for your Spring API (e.g., 'book-api-service').
 // This is critical for the "Configure the React app to call the Kubernetes Service endpoint" requirement.
+// For port-forwarding setup, always use localhost:8080
+// This works for both development and the current Kubernetes setup
 const API_BASE_URL = 'http://localhost:8080';
 
 function BookManager() {
@@ -44,7 +46,7 @@ function BookManager() {
     e.preventDefault();
     const params = new URLSearchParams();
     params.append('title', newBook.title);
-    params.append('ISBN', newBook.ISBN);
+    params.append('isbn', newBook.ISBN);
 
     try {
       const response = await axios.post(`${API_BASE_URL}/add`, params.toString(), {
@@ -104,7 +106,7 @@ function BookManager() {
       <h2>Add New Book</h2>
       <form onSubmit={addBook} style={{ display: 'flex', gap: '10px', marginBottom: '30px' }}>
         <input type="text" name="title" placeholder="Title (String)" value={newBook.title} onChange={handleInputChange} required style={inputStyle} />
-        <input type="number" name="ISBN" placeholder="ISBN (Integer)" value={newBook.isbn} onChange={handleInputChange} required style={inputStyle} />
+        <input type="number" name="ISBN" placeholder="ISBN (Integer)" value={newBook.ISBN} onChange={handleInputChange} required style={inputStyle} />
         <button type="submit" style={buttonStyle.create}>Add Book</button>
       </form>
       
